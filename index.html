@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Naarvan Riistamiehet ry:n kotisivut — yhdistys, jäsenmaksut, tapahtumat, uutiset, kuvia ja yhteystiedot.">
+<title>Naarvan Riistamiehet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#EAEBE2;
+    --bg-alt:#DFE1D3;
+    --surface:#F6F6F0;
+    --text:#1E2420;
+    --text-muted:#5B6259;
+    --accent:#2F4A3C;
+    --accent-ink:#F6F6F0;
+    --accent-2:#D9531F;
+    --accent-2-ink:#FCF3EC;
+    --border:#C9CDBB;
+    --wood:#A97F55;
+    --shadow: 0 1px 2px rgba(20,24,18,0.06), 0 8px 24px -12px rgba(20,24,18,0.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#161D18;
+      --bg-alt:#1E2620;
+      --surface:#212B23;
+      --text:#EBEEE4;
+      --text-muted:#A7AE9C;
+      --accent:#86AC91;
+      --accent-ink:#12180F;
+      --accent-2:#FF7C43;
+      --accent-2-ink:#1D1006;
+      --border:#374035;
+      --wood:#C9A276;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161D18;
+    --bg-alt:#1E2620;
+    --surface:#212B23;
+    --text:#EBEEE4;
+    --text-muted:#A7AE9C;
+    --accent:#86AC91;
+    --accent-ink:#12180F;
+    --accent-2:#FF7C43;
+    --accent-2-ink:#1D1006;
+    --border:#374035;
+    --wood:#C9A276;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -12px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Karla', ui-sans-serif, system-ui, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  h1,h2,h3{
+    font-family:'Zilla Slab', ui-serif, Georgia, serif;
+    font-weight:700;
+    line-height:1.1;
+    text-wrap:balance;
+    margin:0 0 0.5em;
+    color:var(--text);
+  }
+  h2{font-size:clamp(1.6rem,3vw,2.1rem); letter-spacing:-0.01em;}
+  h3{font-size:1.15rem; margin-bottom:0.35em;}
+  p{margin:0 0 1em; max-width:65ch;}
+  a{color:inherit;}
+  ul{padding-left:1.1em;}
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums;}
+
+  .site-header{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{
+    max-width:1100px; margin:0 auto; padding:0.85rem 1.25rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .brand{
+    font-family:'Zilla Slab', serif; font-weight:700; font-size:1.15rem;
+    text-decoration:none; color:var(--accent); letter-spacing:-0.01em;
+    white-space:nowrap;
+  }
+  .nav{
+    display:flex; gap:1.35rem; overflow-x:auto; scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .nav::-webkit-scrollbar{display:none;}
+  .nav a{
+    text-decoration:none; color:var(--text-muted); font-weight:500;
+    font-size:0.93rem; white-space:nowrap; padding:0.25rem 0;
+    border-bottom:2px solid transparent;
+  }
+  .nav a:hover{color:var(--accent); border-color:var(--wood);}
+
+  .hero{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(20,26,18,0.35), rgba(15,20,14,0.82)),
+      url('https://bin.yhdistysavain.fi/1612011/Mun05iGV82HtreJ2lfu00akTNk/Metso%20NRM.jpg') center 30%/cover no-repeat;
+    color:#F3F2E9;
+    padding:5.5rem 1.25rem 4.5rem;
+  }
+  .hero-inner{max-width:760px; margin:0 auto; text-align:left;}
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:0.12em; font-size:0.8rem;
+    font-weight:600; color:#E7C9A9; margin-bottom:0.9em;
+  }
+  .hero h1{
+    color:#FBFAF3; font-size:clamp(2.3rem,6vw,3.6rem); margin-bottom:0.4em;
+  }
+  .hero .lede{
+    color:#E4E4D7; font-size:1.15rem; max-width:52ch; margin-bottom:1.8em;
+  }
+  .hero-actions{display:flex; gap:0.85rem; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:0.7rem 1.35rem; border-radius:3px;
+    background:var(--accent-2); color:var(--accent-2-ink); text-decoration:none;
+    font-weight:700; font-size:0.95rem; box-shadow:var(--shadow);
+    border:1px solid transparent;
+  }
+  .btn:hover{filter:brightness(1.06);}
+  .btn-ghost{
+    background:transparent; color:#F3F2E9; border:1px solid rgba(243,242,233,0.5);
+  }
+  .btn-ghost:hover{background:rgba(243,242,233,0.1);}
+
+  .section{max-width:1100px; margin:0 auto; padding:4rem 1.25rem;}
+  .section.alt{background:var(--bg-alt);}
+  .section.alt > *{max-width:1100px; margin-left:auto; margin-right:auto;}
+  .section > .kicker{
+    text-transform:uppercase; letter-spacing:0.1em; font-size:0.78rem;
+    font-weight:600; color:var(--wood); margin-bottom:0.6em;
+  }
+
+  .grid-2{display:grid; grid-template-columns:1.3fr 1fr; gap:2.5rem; align-items:start;}
+  @media (max-width:760px){.grid-2{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px;
+    padding:1.5rem 1.6rem; box-shadow:var(--shadow);
+  }
+  .card h3{color:var(--accent);}
+
+  .docs{margin-top:2.25rem; padding-top:2rem; border-top:1px solid var(--border);}
+  .docs ul{list-style:none; padding:0; display:flex; flex-direction:column; gap:0.6rem;}
+  .docs a{
+    text-decoration:none; color:var(--text); display:inline-flex; align-items:center;
+    gap:0.5em; font-weight:500; border-bottom:1px solid var(--wood);
+    padding-bottom:0.1em;
+  }
+  .docs a:hover{color:var(--accent);}
+
+  table{border-collapse:collapse; width:100%; max-width:560px; background:var(--surface); box-shadow:var(--shadow); border-radius:6px; overflow:hidden;}
+  th,td{text-align:left; padding:0.85rem 1.1rem; border-bottom:1px solid var(--border);}
+  th{font-family:'Zilla Slab',serif; font-weight:600; color:var(--text-muted); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.04em;}
+  td.amount{font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-weight:500; color:var(--accent);}
+  tr:last-child td{border-bottom:none;}
+  .fee-note{margin-top:1.25rem; color:var(--text-muted); font-size:0.95rem;}
+
+  .empty-card{
+    border:1px dashed var(--border); border-radius:6px; padding:2.2rem;
+    color:var(--text-muted); background:var(--surface); max-width:560px;
+  }
+  .empty-card strong{color:var(--text);}
+
+  .timeline{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2rem;}
+  .timeline li{
+    display:grid; grid-template-columns:120px 1fr; gap:1.25rem;
+    padding-bottom:2rem; border-bottom:1px solid var(--border);
+  }
+  .timeline li:last-child{border-bottom:none; padding-bottom:0;}
+  .timeline time{
+    font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:var(--wood);
+    font-weight:500; padding-top:0.2em;
+  }
+  @media (max-width:600px){.timeline li{grid-template-columns:1fr; gap:0.35rem;}}
+
+  .gallery{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.85rem;
+  }
+  .gallery a{
+    display:block; aspect-ratio:4/3; overflow:hidden; border-radius:6px;
+    border:1px solid var(--border); box-shadow:var(--shadow);
+  }
+  .gallery img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 0.35s ease;
+  }
+  .gallery a:hover img{transform:scale(1.06);}
+
+  .contacts{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.1rem;}
+  .contact-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px;
+    padding:1.4rem 1.5rem; box-shadow:var(--shadow);
+  }
+  .contact-card .role{
+    text-transform:uppercase; letter-spacing:0.06em; font-size:0.75rem;
+    color:var(--wood); font-weight:600; margin-bottom:0.5em;
+  }
+  .contact-card a{
+    font-family:'JetBrains Mono',monospace; font-size:0.95rem; text-decoration:none;
+    color:var(--accent); font-weight:500;
+  }
+  .contact-card a:hover{text-decoration:underline;}
+  .address{margin-top:2rem; color:var(--text-muted);}
+
+  .site-footer{
+    border-top:1px solid var(--border); background:var(--bg-alt);
+    padding:2.5rem 1.25rem 3rem;
+  }
+  .footer-inner{max-width:1100px; margin:0 auto;}
+  details{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px;
+    padding:0.9rem 1.2rem; margin-bottom:1.5rem;
+  }
+  summary{cursor:pointer; font-weight:600; color:var(--accent);}
+  details p, details ul{color:var(--text-muted); font-size:0.92rem; margin-top:0.9em;}
+  .fine{color:var(--text-muted); font-size:0.85rem; margin:0;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#etusivu">Naarvan Riistamiehet</a>
+    <nav class="nav">
+      <a href="#yhdistys">Yhdistys</a>
+      <a href="#jasenmaksut">Jäsenmaksut</a>
+      <a href="#tapahtumat">Tapahtumat</a>
+      <a href="#uutiset">Uutiset</a>
+      <a href="#kuvia">Kuvia</a>
+      <a href="#yhteystiedot">Yhteystiedot</a>
+    </nav>
+  </div>
+</header>
+
+<section id="etusivu" class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Metsästysseura · Ilomantsi, Naarva · perustettu 17.11.1960</p>
+    <h1>Naarvan Riistamiehet ry</h1>
+    <p class="lede">Metsästämme pienriistaa, hirveä ja karhua noin 5&nbsp;500 hehtaarin alueella Naarvan kylän ympäristössä. Seuraan kuuluu tällä hetkellä 130 jäsentä, ja ylläpidämme yhteistä metsästysmajaa sekä laavuja koko jäsenistön käyttöön.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#yhteystiedot">Ota yhteyttä</a>
+      <a class="btn btn-ghost" href="#yhdistys">Tutustu seuraan</a>
+    </div>
+  </div>
+</section>
+
+<section id="yhdistys" class="section">
+  <p class="kicker">Yhdistys</p>
+  <h2>Metsästystä Naarvan mailla vuodesta 1960</h2>
+  <div class="grid-2">
+    <div>
+      <p>Naarvan Riistamiehet ry on perustettu 17.11.1960, ja seura toimii Ilomantsin koillisosassa. Metsästysalueemme kattaa noin 5&nbsp;500 hehtaaria Naarvan kylän ympäristössä, ja jäsenillämme on mahdollisuus osallistua pienriistan, hirven ja karhun metsästykseen.</p>
+      <p>Jäseneksi voi hakea kaikki metsästyskortin omaavat hyvämaineiset metsästäjät. Vieraslupia on saatavilla hintaan 25&nbsp;€/päivä; metson metsästys edellyttää kahden päivän luvan.</p>
+    </div>
+    <div class="card">
+      <h3>Metsästysmaja</h3>
+      <p>Seuralla on metsästysmaja Naarvan vaaralla. Majaa ei vuokrata yksityiskäyttöön syksyn metsästyskautena, vaan se on kaikkien jäsenten käytössä. Vuorokausihinta on 10&nbsp;€/hlö, maksetaan seuran tilille varauksen jälkeen.</p>
+      <p style="margin-bottom:0;">Majaisäntänä toimii Mauno Kuivalainen, <a class="mono" href="tel:+358503772460">050 377 2460</a>.</p>
+    </div>
+  </div>
+  <div class="docs">
+    <h3>Säännöt ja ohjeet</h3>
+    <ul>
+      <li><a href="https://bin.yhdistysavain.fi/1612011/1PeVevyIU8lBFCyvIlt20akTHz/SaannotNRMry.pdf" target="_blank" rel="noopener">Yhdistyksen säännöt (PDF)</a></li>
+      <li><a href="https://bin.yhdistysavain.fi/1612011/3w2S6bUkSSLnnYBiYish0akTJv/Hirvenmetsstyssnnt.pdf" target="_blank" rel="noopener">Hirven metsästyssäännöt (PDF)</a></li>
+      <li><a href="https://bin.yhdistysavain.fi/1612011/BVhr9vpKOCYOSpdQMfEE0akTKZ/Karhun_metsstys_2015_Naarvan_riistamiehet_ry.odt" target="_blank" rel="noopener">Karhun metsästyssäännöt (ODT)</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="jasenmaksut" class="section alt">
+  <p class="kicker">Jäsenmaksut</p>
+  <h2>Maksut 2026</h2>
+  <table>
+    <thead>
+      <tr><th>Maksu</th><th>Summa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Liittymismaksu</td><td class="amount">200 €</td></tr>
+      <tr><td>Perheenjäsenet</td><td class="amount">100 €</td></tr>
+      <tr><td>Vuosimaksu</td><td class="amount">50 €</td></tr>
+      <tr><td>Talkoomaksu</td><td class="amount">40 €</td></tr>
+    </tbody>
+  </table>
+  <p class="fee-note">Vieraslupa 25&nbsp;€/päivä. Metson metsästys edellyttää kahden päivän vieraslupaa.</p>
+</section>
+
+<section id="tapahtumat" class="section">
+  <p class="kicker">Tapahtumat</p>
+  <h2>Tulevat tapahtumat</h2>
+  <div class="empty-card">
+    <strong>Ei tulevia tapahtumia juuri nyt.</strong><br>
+    Seuraa uutisia alla tai ole yhteydessä hallitukseen, niin kerromme mielellämme seuraavista kokouksista ja talkoista.
+  </div>
+</section>
+
+<section id="uutiset" class="section alt">
+  <p class="kicker">Uutiset</p>
+  <h2>Ajankohtaista</h2>
+  <ul class="timeline">
+    <li>
+      <time>16.8.2025</time>
+      <div>
+        <h3>Kesäkokous kuulumisia</h3>
+        <p>Naarvan riistamiesten kesäkokous pidettiin lauantaina 2.8.2025 metsästysmajalla. Kokouksessa oli paikalla 15 jäsentä eli normaali määrä kesäkokoukseen.</p>
+      </div>
+    </li>
+    <li>
+      <time>17.7.2025</time>
+      <div>
+        <h3>Kesäkokous ja kilpailut Surmansuolla</h3>
+        <p>Sääntömääräinen kesäkokous pidetään lauantaina 2.8. klo 10.00 seuran majalla. Kokouksen jälkeen siirrytään Surmansuon ampumaradalle kilpailemaan.</p>
+      </div>
+    </li>
+    <li>
+      <time>18.8.2024</time>
+      <div>
+        <h3>Kesäkokoustiedote 2024</h3>
+        <p>Naarvan Riistamiesten kesäkokous pidettiin sunnuntaina 11.8.2024. Kokous käsitteli sääntömääräiset asiat, ja riistakiintiö säilyy ennallaan eli on 6 pistettä. Lisäksi käsiteltiin metso- ja koppelorasituksia.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section id="kuvia" class="section">
+  <p class="kicker">Kuvia</p>
+  <h2>Metsästä ja majalta</h2>
+  <div class="gallery">
+    <a href="https://bin.yhdistysavain.fi/1612011/qy9Ba0200maty9Bkmy1W0chS2J/2e176cc2-001c-414b-a49d-0dca547d9183.jpg" target="_blank" rel="noopener"><img src="https://bin.yhdistysavain.fi/1612011/qy9Ba0200maty9Bkmy1W0chS2J/2e176cc2-001c-414b-a49d-0dca547d9183.jpg" alt="Kuva seuran toiminnasta" loading="lazy"></a>
+    <a href="https://bin.yhdistysavain.fi/1612011/F2yQnwGTjdBTustSezha0chS2K/a02e7ac3-ba26-43da-82a8-33ed3d442fae.jpg" target="_blank" rel="noopener"><img src="https://bin.yhdistysavain.fi/1612011/F2yQnwGTjdBTustSezha0chS2K/a02e7ac3-ba26-43da-82a8-33ed3d442fae.jpg" alt="Kuva seuran toiminnasta" loading="lazy"></a>
+    <a href="https://bin.yhdistysavain.fi/1612011/jEUWP9fMzorscTcK99FR0chS2L/af9601df-7acd-4579-abe7-56d6bc120c98.jpg" target="_blank" rel="noopener"><img src="https://bin.yhdistysavain.fi/1612011/jEUWP9fMzorscTcK99FR0chS2L/af9601df-7acd-4579-abe7-56d6bc120c98.jpg" alt="Kuva seuran toiminnasta" loading="lazy"></a>
+    <a href="https://bin.yhdistysavain.fi/1612011/fD7WHquI3Ntvom98XZca0chS2L/b20b04e3-46f7-4584-abd5-7b0c4a18421c.jpg" target="_blank" rel="noopener"><img src="https://bin.yhdistysavain.fi/1612011/fD7WHquI3Ntvom98XZca0chS2L/b20b04e3-46f7-4584-abd5-7b0c4a18421c.jpg" alt="Kuva seuran toiminnasta" loading="lazy"></a>
+    <a href="https://bin.yhdistysavain.fi/1612011/bnLMfdLG8h4B5yZydKqr0chS2M/dc5541e6-5840-4384-9411-db0ed3f30fb4.jpg" target="_blank" rel="noopener"><img src="https://bin.yhdistysavain.fi/1612011/bnLMfdLG8h4B5yZydKqr0chS2M/dc5541e6-5840-4384-9411-db0ed3f30fb4.jpg" alt="Kuva seuran toiminnasta" loading="lazy"></a>
+    <a href="https://bin.yhdistysavain.fi/1612011/xEO6EjotGuNleghp5aW40chS2N/de9900cd-d5d5-42ff-9200-aba59c091825.jpg" target="_blank" rel="noopener"><img src="https://bin.yhdistysavain.fi/1612011/xEO6EjotGuNleghp5aW40chS2N/de9900cd-d5d5-42ff-9200-aba59c091825.jpg" alt="Kuva seuran toiminnasta" loading="lazy"></a>
+  </div>
+</section>
+
+<section id="yhteystiedot" class="section alt">
+  <p class="kicker">Yhteystiedot</p>
+  <h2>Ota yhteyttä hallitukseen</h2>
+  <div class="contacts">
+    <div class="contact-card">
+      <h3>Jarmo Laatikainen</h3>
+      <p class="role">Puheenjohtaja</p>
+      <a href="tel:+358400372424">0400 372 424</a>
+    </div>
+    <div class="contact-card">
+      <h3>Eetu Kuivalainen</h3>
+      <p class="role">Sihteeri</p>
+      <a href="tel:+358400985484">0400 985 484</a>
+    </div>
+    <div class="contact-card">
+      <h3>Mauno Kuivalainen</h3>
+      <p class="role">Majamestari</p>
+      <a href="tel:+358503772460">050 377 2460</a>
+    </div>
+  </div>
+  <p class="address">Naarvan Riistamiehet ry &middot; Harjutie 3, 83750 Sotkuma</p>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <details>
+      <summary>Tietosuojaseloste</summary>
+      <p><strong>Rekisterinpitäjä:</strong> Naarvan Riistamiehet ry, Harjutie 3, 83750 Sotkuma (Y-tunnus 81.528). Tietosuoja-asioiden yhteyshenkilö: Antti Kuivalainen, antti.kuivalainen@metsastajaliitto.fi.</p>
+      <p>Käsittelemme jäsenluettelon pakollisia tietoja (nimi, kotipaikkakunta) sekä yhdistystoimintaan liittyviä tietoja (osoite, puhelinnumero, sähköposti, syntymäaika, jäsennumero, maksuhistoria) jäsenluettelon ylläpitoa, tapahtumien järjestämistä, jäsenmaksujen käsittelyä ja viestintää varten. Tietoja luovutetaan säännöllisesti Suomen Metsästäjäliitolle ja sen yhteistyökumppaneille.</p>
+      <p>Jäsenten tiedot säilytetään jäsenyyden ajan, entisten jäsenten tiedot 6 kuukautta jäsenyyden päättymisestä ja kirjanpitotiedot 6 vuotta. Sinulla on oikeus tarkastaa, oikaista ja poistaa tietosi, rajoittaa käsittelyä, siirtää tiedot sekä vastustaa käsittelyä tai peruuttaa suostumuksesi. Valituksen voi tehdä tietosuojavaltuutetulle.</p>
+    </details>
+    <p class="fine">&copy; 2026 Naarvan Riistamiehet ry &middot; Y-tunnus 81.528</p>
+  </div>
+</footer>
+
+</body>
+</html>
